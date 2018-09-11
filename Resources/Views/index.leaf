@@ -1,0 +1,7 @@
+#set("title") { VaporBerlin }
+
+#set("content") {
+  <p> Welcome to Vapor.berlin </p>
+}
+
+#embed("Layout/base")
