@@ -1,9 +1,24 @@
 <footer class="footer">
     <div class="container">
         <div class="row">
-            <div class="col-4">Built with Vapor</div>
-            <div class="col-4 text-center">2.0.0</div>
-            <div class="col-4 text-right">About Imprint</div>
+            <div class="col-4">
+                <a href="https://github.com/vapor/vapor" target="_blank">
+                    Built with Vapor
+                </a>
+            </div>
+            <div class="col-4 text-center">
+                <a href="/version">
+                    2.0.0
+                </a>
+            </div>
+            <div class="col-4 text-right">
+                <a href="/version">
+                    About
+                </a>
+                <a href="/version">
+                    Imprint
+                </a>
+            </div>
         </div>
     </div>
 </footer>

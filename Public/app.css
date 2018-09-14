@@ -1,3 +1,5 @@
 html body {
+    background: linear-gradient(135deg,#f46a78,#fabb8f);
     font-family: Lato;
+    color: #ffffff;
 }
