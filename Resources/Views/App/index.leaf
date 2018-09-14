@@ -1,7 +1,25 @@
 #set("title") { VaporBerlin }
 
 #set("content") {
-  <h1 class="text-center"><strong> VaporBerlin </strong></h1>
+    <h1 class="text-center m-b-80"><strong> VaporBerlin </strong></h1>
+
+    <div class="row justify-content-center">
+        <div class="card col-5 m-r-20" style="width: 18rem;">
+            <div class="card-body">
+                <h6 class="card-title text-dark text-center">
+                    <strong>JOIN THE MEETUP</strong>
+                </h6>
+            </div>
+        </div>
+
+        <div class="card col-5 m-l-20" style="width: 18rem;">
+            <div class="card-body">
+                <h6 class="card-title text-dark text-center">
+                    <strong>VOTE FOR A TOPIC</strong>
+                </h6>
+            </div>
+        </div>
+    </div>
 }
 
 #embed("Layout/base")
