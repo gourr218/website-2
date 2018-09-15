@@ -1,3 +1,26 @@
 nav.navbar {
     color: #ffffff;
+    height: 50px;
+    font-size: 22px;
+}
+
+nav.navbar a {
+    color: #ffffff;
+}
+
+nav.navbar a:hover {
+    text-decoration: underline;
+}
+
+nav.navbar .brand {
+    font-weight: 500;
+}
+
+nav .navigation {
+    display: flex;
+    font-weight: 300;
+}
+
+nav .navigation a:last-child {
+    padding-right: 0;
 }

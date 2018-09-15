@@ -7,17 +7,11 @@
                 </a>
             </div>
             <div class="col-4 text-center">
-                <a href="/version">
-                    2.0.0
-                </a>
+                <a href="/version"> 2.0.0 </a>
             </div>
             <div class="col-4 text-right">
-                <a href="/version">
-                    About
-                </a>
-                <a href="/version">
-                    Imprint
-                </a>
+                <a href="/about"> About </a>
+                <a href="/imprint" class="m-l-10"> Imprint </a>
             </div>
         </div>
     </div>

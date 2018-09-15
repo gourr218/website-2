@@ -13,4 +13,7 @@ public func routes(_ router: Router) throws {
     router.get("/about", use: appController.renderAbout)
     router.get("/imprint", use: appController.renderImprint)
     router.get("/version", use: appController.renderVersion)
+
+    let topicController = TopicController()
+    router.get("/topics", use: topicController.renderList)
 }

@@ -1,0 +1,59 @@
+.row {
+    flex-flow: column;
+    align-items: center;
+}
+
+.card {
+    border-radius: 4px;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,.14);
+    height: 200px;
+    overflow: hidden;
+    border: 0;
+    display: flex;
+    align-items: center;
+    flex-flow: column;
+    max-width: 350px;
+    margin-bottom: 30px;
+}
+
+.card img {
+    width: 210px;
+    margin-top: 25px;
+}
+
+.card .btn {
+    background-color: #ec2440;
+    color: #ffffff;
+    font-style: italic;
+    display: flex;
+    margin-top: 55px;
+    font-size: 14px;
+}
+
+.card .btn span {
+    line-height: 1.7;
+}
+
+@media screen and (min-width: 768px) {
+    .row {
+        flex-flow: row;
+    }
+
+    .card:first-child {
+        margin-right: 25px;
+    }
+
+    .card:last-child {
+        margin-left: 25px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .card:first-child {
+        margin-right: 40px;
+    }
+
+    .card:last-child {
+        margin-left: 40px;
+    }
+}
