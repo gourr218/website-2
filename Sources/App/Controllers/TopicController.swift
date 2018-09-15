@@ -16,7 +16,7 @@ final class TopicController {
                         currentUserVoted: topicVotes.contains(where: { $0.id == user?.id })
                     )
                 }
-            }.flatten(on: req)
+            }.flatten(on: req).map { $0.sorted(by: {$0.votes > $1.votes}) }
 
             let viewData = ViewData(
                 isUser: user != nil,
