@@ -13,6 +13,19 @@ a.link-overlay {
     cursor: pointer;
 }
 
+.card {
+    border-radius: 4px;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,.14);
+    overflow: hidden;
+    border: 0;
+}
+
+.btn-custom-vb {
+    background: linear-gradient(135deg, #f46a78, #fabb8f);
+    border: 1px solid #f46978;
+    color: #ffffff;
+}
+
 /* Icons (Feather) */
 .feather {
     width: 24px;
@@ -63,6 +76,10 @@ a.link-overlay {
 
 .m-t-60 {
     margin-top: 60px;
+}
+
+.m-b-0 {
+    margin-bottom: 0px;
 }
 
 .m-b-60 {

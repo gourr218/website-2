@@ -1,14 +1,10 @@
-.row {
+.index-view .row {
     flex-flow: column;
     align-items: center;
 }
 
-.card {
-    border-radius: 4px;
-    box-shadow: 0 1px 4px 0 rgba(0,0,0,.14);
+.index-view .card {
     height: 200px;
-    overflow: hidden;
-    border: 0;
     display: flex;
     align-items: center;
     flex-flow: column;
@@ -16,12 +12,12 @@
     margin-bottom: 30px;
 }
 
-.card img {
+.index-view .card img {
     width: 210px;
     margin-top: 25px;
 }
 
-.card .btn {
+.index-view .card .btn {
     background-color: #ec2440;
     color: #ffffff;
     font-style: italic;
@@ -30,30 +26,30 @@
     font-size: 14px;
 }
 
-.card .btn span {
+.index-view .card .btn span {
     line-height: 1.7;
 }
 
 @media screen and (min-width: 768px) {
-    .row {
+    .index-view .row {
         flex-flow: row;
     }
 
-    .card:first-child {
+    .index-view .card:first-child {
         margin-right: 25px;
     }
 
-    .card:last-child {
+    .index-view .card:last-child {
         margin-left: 25px;
     }
 }
 
 @media screen and (min-width: 992px) {
-    .card:first-child {
+    .index-view .card:first-child {
         margin-right: 40px;
     }
 
-    .card:last-child {
+    .index-view .card:last-child {
         margin-left: 40px;
     }
 }

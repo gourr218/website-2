@@ -1,31 +1,33 @@
 #set("title") { VaporBerlin }
 
 #set("content") {
-    <h1 class="text-center m-b-60 m-t-60"><strong> VaporBerlin </strong></h1>
-
-    <div class="row justify-content-center">
-        <div class="card col-5">
-            <div class="card-body">
-                <a class="link-overlay" href="https://www.meetup.com/VaporBerlin/" target="_blank"></a>
-                <h6 class="card-title text-dark text-center">
-                    <strong>JOIN THE MEETUP</strong>
-                </h6>
-                <img src="/images/meetup_logo.png" alt="meetup-logo" />
+    <div class="index-view">
+        <h1 class="text-center m-b-60 m-t-60"><strong> VaporBerlin </strong></h1>
+        
+        <div class="row justify-content-center">
+            <div class="card col-5">
+                <div class="card-body">
+                    <a class="link-overlay" href="https://www.meetup.com/VaporBerlin/" target="_blank"></a>
+                    <h6 class="card-title text-dark text-center">
+                        <strong>JOIN THE MEETUP</strong>
+                    </h6>
+                    <img src="/images/meetup_logo.png" alt="meetup-logo" />
+                </div>
             </div>
-        </div>
 
-        <div class="card col-5" style="width: 18rem;">
-            <div class="card-body">
-                <a class="link-overlay" href="/topics" target="_blank"></a>
-                <h6 class="card-title text-dark text-center">
-                    <strong>VOTE A TOPIC</strong>
-                </h6>
-                <button class="btn">
-                    <svg class="feather">
-                        <use xlink:href="/icons/feather-sprite.svg#chevron-up"/>
-                    </svg>
-                    <span class="m-l-10">"How to create a route"</span>
-                </button>
+            <div class="card col-5">
+                <div class="card-body">
+                    <a class="link-overlay" href="/topics" target="_blank"></a>
+                    <h6 class="card-title text-dark text-center">
+                        <strong>VOTE A TOPIC</strong>
+                    </h6>
+                    <button class="btn">
+                        <svg class="feather">
+                            <use xlink:href="/icons/feather-sprite.svg#chevron-up"/>
+                        </svg>
+                        <span class="m-l-10">"How to create a route"</span>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
