@@ -17,7 +17,7 @@
 
             <div class="card col-5">
                 <div class="card-body">
-                    <a class="link-overlay" href="/topics" target="_blank"></a>
+                    <a class="link-overlay" href="/topics"></a>
                     <h6 class="card-title text-dark text-center">
                         <strong>VOTE A TOPIC</strong>
                     </h6>

@@ -6,7 +6,10 @@ import FluentPostgreSQL
 final class UserController {
 
     func renderRegister(req: Request) throws -> Future<View> {
-        return try req.view().render("User/register")
+        return try req.view().render(
+            "User/register",
+            ["isUser": try req.isAuthenticated(User.self)]
+        )
     }
 
     func register(req: Request) throws -> Future<Response> {
@@ -28,7 +31,7 @@ final class UserController {
     }
 
     func renderLogin(req: Request) throws -> Future<View> {
-        return try req.view().render("User/login")
+        return try req.view().render("User/login", ["isUser": try req.isAuthenticated(User.self)])
     }
 
     func login(req: Request) throws -> Future<Response> {

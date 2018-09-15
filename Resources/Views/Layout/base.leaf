@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="/footer.css">
         <link rel="stylesheet" href="/navigation.css">
         <link rel="stylesheet" href="/index.css">
+        <link rel="stylesheet" href="/topic.css">
     </head>
     <body>
         #embed("Layout/Partials/navigation")
