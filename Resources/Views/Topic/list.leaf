@@ -5,7 +5,7 @@
         <h1 class="text-center m-t-30 m-b-30"><strong> Topics </strong></h1>
         #if(!isUser) {
             <div class="row justify-content-center">
-                <div class="alert alert-light m-b-30 col-5 background-custom-danger" role="alert">
+                <div class="alert alert-light m-b-30 col-10 col-sm-7 col-md-6 col-lg-5 col-xl-4 background-custom-danger" role="alert">
                     <h5 class="text-center m-b-0">
                         login to create or vote a topic
                     </h5>
@@ -14,17 +14,29 @@
         }
         <form action="/topics" method="POST" class="m-b-30">
             <div class="input-group mb-3">
-                <input type="text" name="description" class="form-control" id="description" />
+                <input type="text" name="description" class="form-control" id="description" placeholder="Type your topic suggestion here.." />
                 <div class="input-group-append">
-                    <input type="submit" class="btn btn-block background-custom-vb" value="Add" />
+                    <input type="submit" class="btn btn-block background-custom-vb add-button" value="Add" />
                 </div>
             </div>
         </form>
         #for(topicWithVote in topicsWithVotes) {
-            <div class="card text-dark m-b-20">
-                <div class="card-body">
-                    #(topicWithVote.votes)
-                    #(topicWithVote.topic.description)
+            <div class="topic-description m-b-20">
+                <form action="/vote" method="POST" class="m-b-0" id="form-vote">
+                    <div class="vote-button #if(userId == topicWithVote.topic.userID){ active }" onclick="document.getElementById('form-vote').submit();">
+                        <input name="topicId" value="#(topicWithVote.topic.id)" class="d-none" />
+                        <span class="arrow icon">
+                            <svg class="feather">
+                                <use xlink:href="/icons/feather-sprite.svg#chevron-up"/>
+                            </svg>
+                        </span>
+                        <span>#(topicWithVote.votes)</span>
+                    </div>
+                </form>
+                <div class="card text-dark">
+                    <div class="card-body">
+                        #(topicWithVote.topic.description)
+                    </div>
                 </div>
             </div>
         }

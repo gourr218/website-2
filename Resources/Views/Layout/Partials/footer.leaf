@@ -11,7 +11,7 @@
             </div>
             <div class="col-4 text-right">
                 <a href="/about"> About </a>
-                <a href="/imprint" class="m-l-10"> Imprint </a>
+                <a href="/imprint" class="m-l-20"> Imprint </a>
             </div>
         </div>
     </div>

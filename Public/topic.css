@@ -1,14 +1,79 @@
+.topic-view .topic-description {
+    display: flex;
+    align-items: center;
+}
+
+.topic-view .topic-description .card {
+    width: 100%;
+}
+
 .topic-view #description {
     border: 1px solid #f46978;
     box-shadow: 0 1px 4px 0 rgba(0,0,0,.14);
     height: 60px;
+    padding: 1.25rem;
 }
 
-.topic-view input[type='submit'] {
+.topic-view #description::placeholder {
+    color: #b3b3b3;
+}
+
+.topic-view input.add-button {
     box-shadow: 0 1px 4px 0 rgba(0,0,0,.14);
     background: #fff;
     color: #f46a78;
     padding: 17px 12px;
     width: 75px;
     z-index: 100;
+    transition: none;
+}
+
+.topic-view input.add-button:hover {
+    background: linear-gradient(135deg, #f46a78, #fabb8f);
+    color: #ffffff;
+}
+
+.topic-view input.vote-button.active .icon {
+    display: none
+}
+
+.topic-view .vote-button {
+    width: 60px;
+    padding: 15px 0 0 0;
+    height: 54px;
+    background: #ffffff;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,.14);
+    border-width: 1px;
+    border-style: solid;
+    border-color: #ffffff;
+    border-radius: 5px;
+    margin-right: 10px;
+    color: #343a40;
+    font-weight: 600;
+    padding-top: 15px;
+    outline: none;
+    cursor: pointer;
+    animation: border-color .2s ease-in-out;
+    display: flex;
+    flex-flow: column;
+    padding: 0;
+    text-align: center;
+    justify-content: center;
+}
+
+.topic-view .vote-button:hover,
+.topic-view .vote-button.active {
+    background: linear-gradient(135deg, #f46a78, #fabb8f);
+    color: #ffffff;
+    
+}
+
+.topic-view .vote-button.active .icon {
+    display: none;
+}
+
+.topic-view .topic-description .card-body {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
 }

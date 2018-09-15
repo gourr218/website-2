@@ -3,7 +3,7 @@ import Leaf
 
 final class TopicController {
 
-    func renderList(req: Request) throws -> Future<View> {
+    func renderList(req: Request) throws -> Future<Response> {
         return Topic.query(on: req).all().flatMap { topics in
             let topicsWithVotes = try topics.map { topic in
                 return TopicWithVotes(
@@ -12,12 +12,17 @@ final class TopicController {
                 )
             }
 
+            guard let user = try req.authenticated(User.self) else {
+                return req.future(req.redirect(to: "/login"))
+            }
+
             let viewData = ViewData(
                 isUser: try req.isAuthenticated(User.self),
+                userId: try user.requireID(),
                 topicsWithVotes: topicsWithVotes
             )
 
-            return try req.view().render("Topic/list", viewData)
+            return try req.view().render("Topic/list", viewData).encode(for: req)
         }
     }
 
@@ -42,5 +47,6 @@ struct TopicWithVotes: Encodable {
 
 struct ViewData: Encodable {
     var isUser: Bool
+    var userId: Int
     var topicsWithVotes: [TopicWithVotes]
 }
