@@ -22,8 +22,8 @@
         </form>
         #for(topicWithVote in topicsWithVotes) {
             <div class="topic-description m-b-20">
-                <form action="/vote" method="POST" class="m-b-0" id="form-vote">
-                    <div class="vote-button #if(userId == topicWithVote.topic.userID){ active }" onclick="document.getElementById('form-vote').submit();">
+                <form action="/topics/vote" method="POST" class="m-b-0" id="form-vote-#(topicWithVote.topic.id)">
+                    <div class="vote-button #if(topicWithVote.currentUserVoted){ active }" onclick="document.getElementById('form-vote-#(topicWithVote.topic.id)').submit();">
                         <input name="topicId" value="#(topicWithVote.topic.id)" class="d-none" />
                         <span class="arrow icon">
                             <svg class="feather">

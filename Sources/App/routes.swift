@@ -20,6 +20,7 @@ public func routes(_ router: Router) throws {
     /* Topic */
     let topicController = TopicController()
     routerWithAuthSession.get("/topics", use: topicController.renderList)
+    routerWithAuthSession.post("/topics/vote", use: topicController.vote)
 
     /* User */
     let userController = UserController()

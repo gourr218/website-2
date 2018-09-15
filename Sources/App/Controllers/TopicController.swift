@@ -1,24 +1,25 @@
 import Vapor
 import Leaf
+import FluentPostgreSQL
 
 final class TopicController {
 
     func renderList(req: Request) throws -> Future<Response> {
         return Topic.query(on: req).all().flatMap { topics in
-            let topicsWithVotes = try topics.map { topic in
-                return TopicWithVotes(
-                    topic: topic,
-                    votes: try topic.userVotes.query(on: req).count()
-                )
-            }
+            let user = try req.authenticated(User.self)
 
-            guard let user = try req.authenticated(User.self) else {
-                return req.future(req.redirect(to: "/login"))
-            }
+            let topicsWithVotes = try topics.map { topic in
+                try topic.userVotes.query(on: req).all().map { topicVotes in
+                    TopicWithVotes(
+                        topic: topic,
+                        votes: topicVotes.count,
+                        currentUserVoted: topicVotes.contains(where: { $0.id == user?.id })
+                    )
+                }
+            }.flatten(on: req)
 
             let viewData = ViewData(
-                isUser: try req.isAuthenticated(User.self),
-                userId: try user.requireID(),
+                isUser: user != nil,
                 topicsWithVotes: topicsWithVotes
             )
 
@@ -38,15 +39,44 @@ final class TopicController {
             return topic.userVotes.attach(user, on: req)
         }.transform(to: req.redirect(to: "/topics"))
     }
+
+    func vote(req: Request) throws -> Future<Response> {
+        guard let user = try req.authenticated(User.self) else {
+            return req.future(req.redirect(to: "/login"))
+        }
+
+        return try req.content.decode(VoteTopic.self).flatMap { voteTopic in
+            return try TopicUser
+                .query(on: req)
+                .filter(\.topicID == voteTopic.topicId)
+                .filter(\.userID == user.requireID()).first().flatMap { vote in
+                    if let _ = vote {
+                        return req.future(req.redirect(to: "/topics"))
+                    }
+
+                    return Topic.find(voteTopic.topicId, on: req).flatMap { topic in
+                        guard let topic = topic else {
+                            throw Abort(.internalServerError)
+                        }
+
+                        return topic.userVotes.attach(user, on: req).map { _ in req.redirect(to: "/topics") }
+                    }
+            }
+        }
+    }
 }
 
 struct TopicWithVotes: Encodable {
     var topic: Topic
-    var votes: Future<Int>
+    var votes: Int
+    var currentUserVoted: Bool
 }
 
 struct ViewData: Encodable {
     var isUser: Bool
-    var userId: Int
-    var topicsWithVotes: [TopicWithVotes]
+    var topicsWithVotes: Future<[TopicWithVotes]>
+}
+
+struct VoteTopic: Decodable {
+    var topicId: Int
 }
