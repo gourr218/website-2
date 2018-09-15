@@ -2,6 +2,7 @@
 
 #set("content") {
     <h1 class="text-center m-t-30"><strong> Topics </strong></h1>
+    <h3 class="text-center m-t-30">#if(isUser) { Logged In 👍🏻 }</h3>
 }
 
 #embed("Layout/base")

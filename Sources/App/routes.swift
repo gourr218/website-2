@@ -4,9 +4,9 @@ public func routes(_ router: Router) throws {
 
     let userController = UserController()
     router.get("/login", use: userController.renderLogin)
-    router.post("/login", use: userController.login)
     router.get("/register", use: userController.renderRegister)
     router.post("/register", use: userController.register)
+
 
     let appController = AppController()
     router.get("/", use: appController.renderIndex)
@@ -15,5 +15,8 @@ public func routes(_ router: Router) throws {
     router.get("/version", use: appController.renderVersion)
 
     let topicController = TopicController()
-    router.get("/topics", use: topicController.renderList)
+
+    let routerWithAuthSession = router.grouped(User.authSessionsMiddleware())
+    routerWithAuthSession.get("/topics", use: topicController.renderList)
+    routerWithAuthSession.post("/login", use: userController.login)
 }
