@@ -16,6 +16,7 @@ final class User: PostgreSQLModel {
 
 extension User: Migration { }
 extension User: Content { }
+extension User: SessionAuthenticatable {}
 
 extension User: PasswordAuthenticatable {
     static var usernameKey: WritableKeyPath<User, String> {
@@ -26,4 +27,8 @@ extension User: PasswordAuthenticatable {
     }
 }
 
-extension User: SessionAuthenticatable {}
+extension User {
+    var topics: Children<User, Topic> {
+        return children(\.userID)
+    }
+}

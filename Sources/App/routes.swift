@@ -1,4 +1,5 @@
 import Vapor
+import Authentication
 
 public func routes(_ router: Router) throws {
 
@@ -19,4 +20,7 @@ public func routes(_ router: Router) throws {
     let routerWithAuthSession = router.grouped(User.authSessionsMiddleware())
     routerWithAuthSession.get("/topics", use: topicController.renderList)
     routerWithAuthSession.post("/login", use: userController.login)
+
+    let protectedRouter = routerWithAuthSession.grouped(RedirectMiddleware<User>(path: "/login"))
+    protectedRouter.post("/topics", use: topicController.create)
 }

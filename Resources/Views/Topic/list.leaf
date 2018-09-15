@@ -3,6 +3,20 @@
 #set("content") {
     <h1 class="text-center m-t-30"><strong> Topics </strong></h1>
     <h3 class="text-center m-t-30">#if(isUser) { Logged In 👍🏻 }</h3>
+    <form action="/topics" method="POST" class="m-b-0">
+        <div class="form-group">
+            <input type="text" name="description" class="form-control" id="description" />
+        </div>
+        <div class="form-group m-t-30 m-b-0">
+            <input type="submit" class="btn btn-block btn-custom-vb" value="create" />
+        </div>
+    </form>
+    #for(topicWithVote in topicsWithVotes) {
+        <div class="alert alert-light text-dark" role="alert">
+            #(topicWithVote.votes)
+            #(topicWithVote.topic.description)
+        </div>
+    }
 }
 
 #embed("Layout/base")
