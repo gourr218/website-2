@@ -21,6 +21,20 @@ nav .navigation {
     font-weight: 300;
 }
 
-nav .navigation a:last-child {
+nav .navigation a:last-child,
+nav .navigation input:last-child {
     padding-right: 0;
+}
+
+nav .navigation input.nav-link {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-weight: 300;
+}
+
+nav .navigation input.nav-link:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    outline: none;
 }

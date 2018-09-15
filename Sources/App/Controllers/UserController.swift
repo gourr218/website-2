@@ -51,4 +51,9 @@ final class UserController {
             }
         }
     }
+
+    func logout(req: Request) throws -> Future<Response> {
+        try req.unauthenticate(User.self)
+        return req.future(req.redirect(to: "/"))
+    }
 }

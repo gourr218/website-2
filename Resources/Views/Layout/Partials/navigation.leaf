@@ -12,6 +12,10 @@
                 <a class="nav-link" href="/login">
                     Login
                 </a>
+            } else {
+            <form action="/logout" method="POST" class="m-b-0">
+                <input type="submit" class="nav-link" value="Logout"/>
+            </form>
             }
         </div>
     </div>
