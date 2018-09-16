@@ -1,0 +1,44 @@
+#set("title") { VaporBerlin | Imprint }
+
+#set("content") {
+    <div class="about-view">
+        <h1 class="text-center m-b-30 m-t-30"><strong> Imprint </strong></h1>
+
+        <div class="row justify-content-center">
+            <div class="card p-2 m-b-30 col-10 col-sm-8 col-md-6 col-lg-5 col-xl-4">
+                <div class="card-body text-dark text-center">
+                    <h4 class="card-title">
+                        <strong>Martin J. Lasek</strong>
+                    </h4>
+                    <h6 class="f-s-14"> iOS / Web Fullstack Developer </h6>
+                    <div class="social-media m-t-20">
+                        <a href="https://github.com/MartinLasek" target="_blank">
+                            <span class="github icon">
+                                <svg class="feather">
+                                    <use xlink:href="/icons/feather-sprite.svg#github"/>
+                                </svg>
+                            </span>
+                        </a>
+                        <a href="https://twitter.com/martinlasek" target="_blank" class="m-l-10 m-r-10">
+                            <span class="arrow icon">
+                                <svg class="feather">
+                                    <use xlink:href="/icons/feather-sprite.svg#twitter"/>
+                                </svg>
+                            </span>
+                        </a>
+                        <a href="https://www.instagram.com/martin_lasek/" target="_blank">
+                            <span class="arrow icon">
+                                <svg class="feather">
+                                    <use xlink:href="/icons/feather-sprite.svg#instagram"/>
+                                </svg>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+
+#embed("Layout/base")

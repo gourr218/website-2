@@ -5,7 +5,7 @@
             <a class="nav-link" href="/topics">
                 Topics
             </a>
-            #if(!isUser) {
+            #if(!appInfo.isUser) {
                 <a class="nav-link" href="/register">
                     Register
                 </a>

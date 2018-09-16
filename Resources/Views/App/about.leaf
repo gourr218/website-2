@@ -1,0 +1,26 @@
+#set("title") { VaporBerlin | About }
+
+#set("content") {
+    <div class="about-view">
+        <h1 class="text-center m-b-30 m-t-30"><strong> About </strong></h1>
+
+        <div class="row justify-content-center">
+            <div class="card p-2 m-b-30 col-10 col-sm-8 col-md-6 col-lg-5 col-xl-4">
+                <div class="card-body text-dark">
+                    <h5 class="card-title">
+                        <strong>Purpose</strong>
+                    </h5>
+                    <p class="f-s-14">Enabling you to decide what will be presented on the next meetup by creating and voting a topic!</p>
+
+                    <h5 class="card-title m-t-30">
+                        <strong>Technology</strong>
+                    </h5>
+                    <p class="f-s-14">This site is build purely on the back of Vapor 3 and Leaf!</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+
+#embed("Layout/base")

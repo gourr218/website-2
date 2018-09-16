@@ -24,3 +24,10 @@ body {
 .footer a {
     color: #ffffff;
 }
+
+/* trick to only display the first element of
+ * the array of versions thus the 'newest'.
+ */
+.footer .version-list:nth-child(n+2) {
+    display: none;
+}

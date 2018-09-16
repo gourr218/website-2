@@ -18,8 +18,8 @@ final class TopicController {
                 }
             }.flatten(on: req).map { $0.sorted(by: {$0.votes > $1.votes}) }
 
-            let viewData = ViewData(
-                isUser: user != nil,
+            let viewData = ViewData.TopicList(
+                appInfo: try ViewData.appInfo(on: req),
                 topicsWithVotes: topicsWithVotes
             )
 
@@ -76,11 +76,6 @@ struct TopicWithVotes: Encodable {
     var topic: Topic
     var votes: Int
     var currentUserVoted: Bool
-}
-
-struct ViewData: Encodable {
-    var isUser: Bool
-    var topicsWithVotes: Future<[TopicWithVotes]>
 }
 
 struct VoteTopic: Decodable {

@@ -3,7 +3,7 @@
 #set("content") {
     <div class="topic-view">
         <h1 class="text-center m-t-30 m-b-30"><strong> Topics </strong></h1>
-        #if(!isUser) {
+        #if(!appInfo.isUser) {
             <div class="row justify-content-center">
                 <div class="alert alert-light m-b-30 col-10 col-sm-7 col-md-6 col-lg-5 col-xl-4 background-custom-danger" role="alert">
                     <h5 class="text-center m-b-0">
