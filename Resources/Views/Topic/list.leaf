@@ -14,7 +14,14 @@
         }
         <form action="/topics" method="POST" class="m-b-30">
             <div class="input-group mb-3">
-                <input type="text" name="description" class="form-control" id="description" placeholder="Type your topic suggestion here.." />
+                <input
+                    type="text"
+                    name="description"
+                    class="form-control"
+                    id="description"
+                    placeholder="Type your topic suggestion here.."
+                    autocomplete="off"
+                />
                 <div class="input-group-append">
                     <input type="submit" class="btn btn-block background-custom-vb add-button" value="Add" />
                 </div>

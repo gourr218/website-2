@@ -1,0 +1,28 @@
+#set("title") { VaporBerlin | Versions }
+
+#set("content") {
+    <div class="version-view">
+        <h1 class="text-center m-b-30 m-t-30"><strong> Versions </strong></h1>
+
+        <div class="row justify-content-center">
+            #for(version in versions) {
+                <div class="col-12">
+                    <h6 class="card-title text-white text-center f-s-18">
+                        #(version.major).#(version.minor).#(version.patch)
+                    </h6>
+                </div>
+                <div class="card p-2 m-b-30 col-10 col-sm-8 col-md-6 col-lg-5 col-xl-4">
+                    <div class="card-body">
+                        <ul class="text-custom-vb f-s-14">
+                            #for(change in version.changes) {
+                            <li>#(change)</li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}
+
+#embed("Layout/base")

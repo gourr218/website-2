@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="/navigation.css">
         <link rel="stylesheet" href="/index.css">
         <link rel="stylesheet" href="/topic.css">
+        <link rel="stylesheet" href="/version.css">
     </head>
     <body>
         #embed("Layout/Partials/navigation")

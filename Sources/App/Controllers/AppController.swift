@@ -16,6 +16,15 @@ final class AppController {
     }
 
     func renderVersion(req: Request) throws -> Future<View> {
-        return try req.view().render("App/version", ["isUser": try req.isAuthenticated(User.self)])
+        let viewData = VersionViewData(
+            versions: Version.versions,
+            isUser: try req.isAuthenticated(User.self)
+        )
+        return try req.view().render("App/version", viewData)
     }
+}
+
+struct VersionViewData: Encodable {
+    var versions: [Version]
+    var isUser: Bool
 }
