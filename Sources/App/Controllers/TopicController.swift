@@ -32,12 +32,18 @@ final class TopicController {
             return req.future(req.redirect(to: "/topics"))
         }
 
-        return try req.content.decode(TopicForm.self).flatMap { topicForm -> Future<Topic> in
+        return try req.content.decode(TopicForm.self).flatMap { topicForm in
+            if !topicForm.isValid {
+                return req.future(req.redirect(to: "/topics"))
+            }
+
             let userId = try user.requireID()
-            return Topic(description: topicForm.description, userID: userId).save(on: req)
-        }.flatMap { topic in
-            return topic.userVotes.attach(user, on: req)
-        }.transform(to: req.redirect(to: "/topics"))
+            return Topic(description: topicForm.description, userID: userId)
+                .save(on: req)
+                .flatMap { topic in
+                return topic.userVotes.attach(user, on: req)
+            }.transform(to: req.redirect(to: "/topics"))
+        }
     }
 
     func vote(req: Request) throws -> Future<Response> {

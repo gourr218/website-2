@@ -28,4 +28,9 @@ extension Topic {
 
 struct TopicForm: Codable {
     var description: String
+    var isValid: Bool {
+        get {
+            return self.description.count > 5
+        }
+    }
 }
