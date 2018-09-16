@@ -35,6 +35,7 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     migrations.add(model: User.self, database: .psql)
     migrations.add(model: Topic.self, database: .psql)
     migrations.add(model: TopicUser.self, database: .psql)
+    migrations.add(model: AdminUser.self, database: .psql)
     services.register(migrations)
 
     config.prefer(MemoryKeyedCache.self, for: KeyedCache.self)

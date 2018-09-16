@@ -1,5 +1,4 @@
 import FluentPostgreSQL
-import Vapor
 import Authentication
 
 final class User: PostgreSQLModel {
@@ -14,8 +13,8 @@ final class User: PostgreSQLModel {
     }
 }
 
-extension User: Migration { }
-extension User: Content { }
+extension User: Migration {}
+extension User: Content {}
 extension User: SessionAuthenticatable {}
 
 extension User: PasswordAuthenticatable {

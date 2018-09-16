@@ -5,18 +5,10 @@
         <title> #get(title) </title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato:100,300, 300i,700">
-        <link rel="stylesheet" href="/app.css">
+        <link rel="stylesheet" href="/Admin/app.css">
         <link rel="stylesheet" href="/utilities.css">
-        <link rel="stylesheet" href="/footer.css">
-        <link rel="stylesheet" href="/navigation.css">
-        <link rel="stylesheet" href="/index.css">
-        <link rel="stylesheet" href="/topic.css">
-        <link rel="stylesheet" href="/version.css">
-        <link rel="stylesheet" href="/imprint.css">
     </head>
     <body>
-        #embed("Layout/Partials/navigation")
-        #embed("Layout/Partials/content")
-        #embed("Layout/Partials/footer")
+        #embed("Admin/Layout/content")
     </body>
 </html>

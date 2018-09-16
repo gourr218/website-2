@@ -1,0 +1,10 @@
+html body {
+    background-color: #1a2836;
+    font-family: Lato;
+    color: #ffffff;
+}
+
+.btn-custom {
+    background-color: #34506d;
+    color: #ffffff;
+}

@@ -3,6 +3,8 @@ import Authentication
 
 public func routes(_ router: Router) throws {
 
+    /// --- User ------------------------------------------------------------------------ ///
+
     /// Public routes with session.
     ///
     /// They need the info about whether a user
@@ -37,4 +39,18 @@ public func routes(_ router: Router) throws {
     /// to the login view if not.
     let protectedRouter = routerWithAuthSession.grouped(RedirectMiddleware<User>(path: "/login"))
     protectedRouter.post("/topics", use: topicController.create)
+
+    /// --- Admin User ------------------------------------------------------------------ ///
+    
+    /* Admin User */
+    let routerWithAdminAuthSession = router.grouped(AdminUser.authSessionsMiddleware())
+
+    let adminUserController = AdminUserController()
+    routerWithAdminAuthSession.get("/admin/register", use: adminUserController.renderRegister)
+    routerWithAdminAuthSession.post("/admin/register", use: adminUserController.register)
+    routerWithAdminAuthSession.get("/admin/login", use: adminUserController.renderLogin)
+    routerWithAdminAuthSession.post("/admin/login", use: adminUserController.login)
+
+    let protectedAdminRouter = routerWithAdminAuthSession.grouped(RedirectMiddleware<AdminUser>(path: "/admin/login"))
+    protectedAdminRouter.get("/admin", use: adminUserController.renderIndex)
 }
