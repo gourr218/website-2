@@ -30,7 +30,7 @@ struct TopicForm: Codable {
     var description: String
     var isValid: Bool {
         get {
-            return self.description.count > 5
+            return description.trimmingCharacters(in: CharacterSet(charactersIn: " ")).count > 5
         }
     }
 }
