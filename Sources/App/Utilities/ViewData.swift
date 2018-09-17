@@ -29,4 +29,25 @@ enum ViewData {
             isUser: try req.isAuthenticated(User.self)
         )
     }
+
+    /// --- Admin User --- ///
+
+    struct AdminAppInfo: Encodable {
+        var isUser: Bool
+    }
+
+    struct AdminTopicList: Encodable {
+        var topics: [Topic]
+        var adminAppInfo: AdminAppInfo
+    }
+
+    static func adminAppInfoWithKey(on req: Request) throws -> [String: AdminAppInfo] {
+        return ["adminAppInfo": try adminAppInfo(on: req)]
+    }
+
+    static func adminAppInfo(on req: Request) throws -> AdminAppInfo {
+        return AdminAppInfo(
+            isUser: try req.isAuthenticated(AdminUser.self)
+        )
+    }
 }

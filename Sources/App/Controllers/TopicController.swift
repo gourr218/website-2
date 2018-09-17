@@ -5,7 +5,7 @@ import FluentPostgreSQL
 final class TopicController {
 
     func renderList(req: Request) throws -> Future<Response> {
-        return Topic.query(on: req).all().flatMap { topics in
+        return Topic.query(on: req).filter(\.isArchived == false).all().flatMap { topics in
             let user = try req.authenticated(User.self)
 
             let topicsWithVotes = try topics.map { topic in

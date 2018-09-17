@@ -1,0 +1,24 @@
+#set("title") { VaporBerlin | Topics }
+
+#set("content") {
+    <div class="admin-index-view">
+        <h1 class="text-center m-t-30 m-b-30"><strong> Topics </strong></h1>
+        #for(topic in topics) {
+            <div class="topic d-flex m-b-20 ">
+                <div class="card text-dark w-100">
+                    <div class="card-body">
+                        <span class="one-line-text">
+                            #(topic.description)
+                        </span>
+                    </div>
+                </div>
+                <form action="/admin/topics/delete" method="POST" class="m-b-0 d-flex">
+                    <input type="text" class="d-none" name="topicId" value="#(topic.id)" />
+                    <input type="submit" class="archive btn btn-primary m-l-10" value="Archive" />
+                </form>
+            </div>
+        }
+    </div>
+}
+
+#embed("Admin/Layout/base")

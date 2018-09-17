@@ -50,7 +50,11 @@ public func routes(_ router: Router) throws {
     routerWithAdminAuthSession.post("/admin/register", use: adminUserController.register)
     routerWithAdminAuthSession.get("/admin/login", use: adminUserController.renderLogin)
     routerWithAdminAuthSession.post("/admin/login", use: adminUserController.login)
+    routerWithAdminAuthSession.get("/admin/logout", use: adminUserController.logout)
+    routerWithAdminAuthSession.post("/admin/logout", use: adminUserController.logout)
 
+    let adminTopicController = AdminTopicController()
     let protectedAdminRouter = routerWithAdminAuthSession.grouped(RedirectMiddleware<AdminUser>(path: "/admin/login"))
-    protectedAdminRouter.get("/admin", use: adminUserController.renderIndex)
+    protectedAdminRouter.get("/admin/topics", use: adminTopicController.renderTopic)
+    protectedAdminRouter.post("/admin/topics/delete", use: adminTopicController.archive)
 }

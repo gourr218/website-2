@@ -8,3 +8,15 @@ html body {
     background-color: #34506d;
     color: #ffffff;
 }
+
+@media screen and (min-width: 768px) {
+    html body {
+        display: flex;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 870px) {
+    .container {
+        max-width: 640px;
+    }
+}

@@ -7,8 +7,11 @@
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato:100,300, 300i,700">
         <link rel="stylesheet" href="/Admin/app.css">
         <link rel="stylesheet" href="/utilities.css">
+        <link rel="stylesheet" href="/Admin/sidebar.css">
+        <link rel="stylesheet" href="/Admin/index.css">
     </head>
     <body>
-        #embed("Admin/Layout/content")
+        #embed("Admin/Layout/Partials/sidebar")
+        #embed("Admin/Layout/Partials/content")
     </body>
 </html>

@@ -4,11 +4,13 @@ final class Topic: PostgreSQLModel {
     var id: Int?
     var description: String
     var userID: User.ID
+    var isArchived: Bool?
 
-    init(id: Int? = nil, description: String, userID: User.ID) {
+    init(id: Int? = nil, description: String, userID: User.ID, isArchived: Bool? = false) {
         self.id = id
         self.description = description
         self.userID = userID
+        self.isArchived = isArchived
     }
 }
 

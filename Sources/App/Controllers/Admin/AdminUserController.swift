@@ -38,17 +38,13 @@ final class AdminUserController {
                 }
 
                 try req.authenticateSession(user)
-                return req.redirect(to: "/admin")
+                return req.redirect(to: "/admin/topics")
             }
         }
     }
 
     func logout(req: Request) throws -> Future<Response> {
-        try req.unauthenticate(User.self)
+        try req.unauthenticate(AdminUser.self)
         return req.future(req.redirect(to: "/admin/login"))
-    }
-
-    func renderIndex(req: Request) throws -> Future<View> {
-        return try req.view().render("Admin/index")
     }
 }

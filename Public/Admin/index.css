@@ -1,0 +1,11 @@
+.admin-index-view .btn.archive {
+    width: 100px;
+}
+
+.one-line-text {
+    white-space: nowrap;
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

@@ -1,0 +1,27 @@
+.sidebar {
+    background-color: #141d26;
+}
+
+.sidebar .nav-link {
+    display: flex;
+}
+
+.sidebar .nav-item input:hover {
+    cursor: pointer;
+}
+
+.sidebar .nav-item input {
+    position: absolute;
+    display: inline;
+    background: transparent;
+    border: none;
+    padding: .5rem 2.5rem;
+    left: 0;
+    color: rgba(255,255,255,.5);
+}
+
+@media screen and (min-width: 768px) {
+    .sidebar {
+        height: 100%;
+    }
+}
