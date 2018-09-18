@@ -24,7 +24,7 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
         port: 5432,
         username: "martinlasek",
         database: "vaporberlin",
-        password: nil
+        password: Environment.get("DATABASE_PW") ?? nil
 
     )
     services.register(postgresqlConfig)

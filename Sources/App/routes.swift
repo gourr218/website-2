@@ -41,9 +41,13 @@ public func routes(_ router: Router) throws {
     protectedRouter.post("/topics", use: topicController.create)
 
     /// --- Admin User ------------------------------------------------------------------ ///
-    
-    /* Admin User */
+
+    /// Public routes with session.
     let routerWithAdminAuthSession = router.grouped(AdminUser.authSessionsMiddleware())
+
+    /* Admin User */
+    let adminAppController = AdminAppController()
+    routerWithAdminAuthSession.get("/admin", use: adminAppController.renderIndex)
 
     let adminUserController = AdminUserController()
     routerWithAdminAuthSession.get("/admin/register", use: adminUserController.renderRegister)
@@ -53,8 +57,10 @@ public func routes(_ router: Router) throws {
     routerWithAdminAuthSession.get("/admin/logout", use: adminUserController.logout)
     routerWithAdminAuthSession.post("/admin/logout", use: adminUserController.logout)
 
-    let adminTopicController = AdminTopicController()
+    /// Protected routes.
     let protectedAdminRouter = routerWithAdminAuthSession.grouped(RedirectMiddleware<AdminUser>(path: "/admin/login"))
+
+    let adminTopicController = AdminTopicController()
     protectedAdminRouter.get("/admin/topics", use: adminTopicController.renderTopic)
     protectedAdminRouter.post("/admin/topics/delete", use: adminTopicController.archive)
 }
