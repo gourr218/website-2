@@ -31,3 +31,30 @@ extension User {
         return children(\.userID)
     }
 }
+
+extension User {
+    func isValid() -> Bool {
+        return isEmailValid() && isPasswordValid()
+    }
+
+    /// Email at minium looks like: a@b.de
+    private func isEmailValid() -> Bool {
+        let minLength = 6
+
+        if
+            email.range(of: "@") == nil ||
+            email.range(of: ".") == nil ||
+            email.count < minLength
+        {
+            return false
+        }
+
+        return true
+    }
+
+    /// Password must have minimum 8 characters
+    private func isPasswordValid() -> Bool {
+        let minLength = 8
+        return password.count >= minLength
+    }
+}

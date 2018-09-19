@@ -26,6 +26,10 @@ a.link-overlay {
     color: #ffffff;
 }
 
+.background-custom-vb:active {
+    background-image: linear-gradient(135deg, #fd596a, #f9b07c) !important;
+}
+
 .background-custom-danger {
     background: #f46a78;
     border: 1px solid #ffffff;
@@ -34,4 +38,8 @@ a.link-overlay {
 
 .text-custom-vb {
     color: #f46978 !important;
+}
+
+.text-custom-muted {
+    color: #a9a9a9;
 }

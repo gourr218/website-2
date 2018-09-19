@@ -12,6 +12,11 @@ final class UserController {
 
     func register(req: Request) throws -> Future<Response> {
         return try req.content.decode(User.self).flatMap { user in
+            let registerRedirect = req.redirect(to: "/register")
+
+            if !user.isValid() {
+                return req.future(registerRedirect)
+            }
 
             return User
                 .query(on: req)
@@ -19,7 +24,7 @@ final class UserController {
                 .first()
                 .flatMap { result in
                 if let _ = result {
-                    return req.future(req.redirect(to: "/register"))
+                    return req.future(registerRedirect)
                 }
 
                 user.password = try BCryptDigest().hash(user.password)
