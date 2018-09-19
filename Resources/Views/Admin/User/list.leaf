@@ -1,0 +1,25 @@
+#set("title") { VaporBerlin | User List }
+
+#set("content") {
+    <div class="admin-index-view">
+        <h1 class="text-center m-t-30 m-b-30"><strong> User List </strong></h1>
+        #for(user in users) {
+            <div class="topic d-flex m-b-20 ">
+                <div class="card text-dark w-100">
+                    <div class="card-body">
+                        <span class="one-line-text">
+                            #(user.email)
+                        </span>
+                    </div>
+                </div>
+                <form action="/admin/users/delete" method="POST" class="m-b-0 d-flex">
+                    <input type="text" class="d-none" name="userId" value="#(user.id)" />
+                    <input type="submit" class="archive btn btn-danger m-l-10" value="Delete" />
+                </form>
+            </div>
+        }
+    </div>
+}
+
+#embed("Admin/Layout/base")
+

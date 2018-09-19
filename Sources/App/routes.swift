@@ -64,4 +64,6 @@ public func routes(_ router: Router) throws {
     protectedAdminRouter.get("/admin/topics", use: adminTopicController.renderTopic)
     protectedAdminRouter.post("/admin/topics/archive", use: adminTopicController.archive)
     protectedAdminRouter.post("/admin/topics/delete", use: adminTopicController.delete)
+    protectedAdminRouter.get("/admin/users", use: adminUserController.renderList)
+    protectedAdminRouter.post("/admin/users/delete", use: adminUserController.delete)
 }

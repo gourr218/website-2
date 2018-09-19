@@ -47,4 +47,31 @@ final class AdminUserController {
         try req.unauthenticate(AdminUser.self)
         return req.future(req.redirect(to: "/admin/login"))
     }
+
+    func renderList(req: Request) throws -> Future<View> {
+        return User.query(on: req).all().flatMap { userList in
+            let viewData = ViewData.AdminUserList(
+                users: userList,
+                adminAppInfo: try ViewData.adminAppInfo(on: req)
+            )
+            return try req.view().render("Admin/User/list", viewData)
+        }
+    }
+
+    func delete(req: Request) throws -> Future<Response> {
+        return try req.content.decode(DeleteUser.self).flatMap { deleteUser in
+            return User.find(deleteUser.userId, on: req).flatMap { user in
+                let redirect = req.redirect(to: "/admin/users")
+                guard let user = user else {
+                    return req.future(redirect)
+                }
+
+                return user.delete(on: req).transform(to: redirect)
+            }
+        }
+    }
+}
+
+struct DeleteUser: Decodable {
+    var userId: Int
 }

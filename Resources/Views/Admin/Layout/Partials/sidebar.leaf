@@ -17,6 +17,19 @@
                     </li>
 
                     <li class="nav-item">
+                        <a class="nav-link pl-0 text-nowrap" href="/admin/users">
+                            <span class="clipboard icon">
+                                <svg class="feather">
+                                    <use xlink:href="/icons/feather-sprite.svg#user"/>
+                                </svg>
+                            </span>
+                            <span class="m-l-10">
+                                User
+                            </span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
                         <a class="nav-link pl-0 text-nowrap" href="/admin/logout">
                             <span class="clipboard icon">
                                 <svg class="feather">

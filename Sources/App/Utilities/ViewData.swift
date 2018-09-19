@@ -41,6 +41,11 @@ enum ViewData {
         var adminAppInfo: AdminAppInfo
     }
 
+    struct AdminUserList: Encodable {
+        var users: [User]
+        var adminAppInfo: AdminAppInfo
+    }
+
     static func adminAppInfoWithKey(on req: Request) throws -> [String: AdminAppInfo] {
         return ["adminAppInfo": try adminAppInfo(on: req)]
     }
