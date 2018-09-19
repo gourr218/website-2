@@ -37,7 +37,16 @@ final class AdminTopicController {
                     return req.future(redirect)
                 }
 
-                return topic.delete(on: req).transform(to: redirect)
+
+                return try TopicUser.query(on: req).filter(\.topicID == topic.requireID()).delete().flatMap { topicVotesList in
+                    return topic.delete(on: req).transform(to: redirect)
+                }
+
+//                Fluent Bug `missing FROM-clause entry for table "Topic_User"`
+//
+//                return try topic.userVotes.query(on: req).delete().flatMap {
+//                    return topic.delete(on: req).transform(to: redirect)
+//                }
             }
         }
     }
