@@ -1,5 +1,7 @@
 .sidebar {
     background-color: #141d26;
+    min-width: 200px;
+    padding: 10px 10px !important;
 }
 
 .sidebar .nav-link {

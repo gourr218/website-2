@@ -12,9 +12,13 @@
                         </span>
                     </div>
                 </div>
-                <form action="/admin/topics/delete" method="POST" class="m-b-0 d-flex">
+                <form action="/admin/topics/archive" method="POST" class="m-b-0 d-flex">
                     <input type="text" class="d-none" name="topicId" value="#(topic.id)" />
                     <input type="submit" class="archive btn btn-primary m-l-10" value="Archive" />
+                </form>
+                <form action="/admin/topics/delete" method="POST" class="m-b-0 d-flex">
+                    <input type="text" class="d-none" name="topicId" value="#(topic.id)" />
+                    <input type="submit" class="archive btn btn-danger m-l-10" value="Delete" />
                 </form>
             </div>
         }

@@ -62,5 +62,6 @@ public func routes(_ router: Router) throws {
 
     let adminTopicController = AdminTopicController()
     protectedAdminRouter.get("/admin/topics", use: adminTopicController.renderTopic)
-    protectedAdminRouter.post("/admin/topics/delete", use: adminTopicController.archive)
+    protectedAdminRouter.post("/admin/topics/archive", use: adminTopicController.archive)
+    protectedAdminRouter.post("/admin/topics/delete", use: adminTopicController.delete)
 }

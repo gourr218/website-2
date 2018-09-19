@@ -16,8 +16,8 @@ final class AdminTopicController {
     }
 
     func archive(req: Request) throws -> Future<Response> {
-        return try req.content.decode(DeleteTopic.self).flatMap { deleteTopic in
-            return Topic.find(deleteTopic.topicId, on: req).flatMap { topic in
+        return try req.content.decode(ArchiveTopic.self).flatMap { archiveTopic in
+            return Topic.find(archiveTopic.topicId, on: req).flatMap { topic in
                 let redirect = req.redirect(to: "/admin/topics")
                 guard let topic = topic else {
                     return req.future(redirect)
@@ -28,6 +28,23 @@ final class AdminTopicController {
             }
         }
     }
+
+    func delete(req: Request) throws -> Future<Response> {
+        return try req.content.decode(DeleteTopic.self).flatMap { deleteTopic in
+            return Topic.find(deleteTopic.topicId, on: req).flatMap { topic in
+                let redirect = req.redirect(to: "/admin/topics")
+                guard let topic = topic else {
+                    return req.future(redirect)
+                }
+
+                return topic.delete(on: req).transform(to: redirect)
+            }
+        }
+    }
+}
+
+struct ArchiveTopic: Decodable {
+    var topicId: Int
 }
 
 struct DeleteTopic: Decodable {
