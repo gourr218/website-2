@@ -1,6 +1,7 @@
 import Vapor
 import Leaf
 import Crypto
+import FluentPostgreSQL
 
 final class AdminUserController {
 
@@ -66,7 +67,11 @@ final class AdminUserController {
                     return req.future(redirect)
                 }
 
-                return user.delete(on: req).transform(to: redirect)
+                return try TopicUser.query(on: req).filter(\.userID == user.requireID()).delete().flatMap { _ in
+                    return try Topic.query(on: req).filter(\.userID == user.requireID()).delete()
+                }.flatMap { _ in
+                    return user.delete(on: req).transform(to: redirect)
+                }
             }
         }
     }

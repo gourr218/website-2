@@ -38,7 +38,7 @@ final class AdminTopicController {
                 }
 
 
-                return try TopicUser.query(on: req).filter(\.topicID == topic.requireID()).delete().flatMap { topicVotesList in
+                return try TopicUser.query(on: req).filter(\.topicID == topic.requireID()).delete().flatMap { _ in
                     return topic.delete(on: req).transform(to: redirect)
                 }
 
