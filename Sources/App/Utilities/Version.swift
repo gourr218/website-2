@@ -11,7 +11,7 @@ struct Version: Encodable {
             minor: 0,
             patch: 0,
             changes: [
-                "rewrite of whole website using Vapor 3"
+                "complete rewrite (now using Vapor 3)"
             ]
         ),
         Version(
