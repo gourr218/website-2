@@ -1,6 +1,8 @@
 import Vapor
 
+/// MARK: App
 enum ViewData {
+
     struct AppInfo: Encodable {
         var versions: [Version]
         var isUser: Bool
@@ -29,9 +31,10 @@ enum ViewData {
             isUser: try req.isAuthenticated(User.self)
         )
     }
+}
 
-    /// --- Admin User --- ///
-
+/// MARK: Admin
+extension ViewData {
     struct AdminAppInfo: Encodable {
         var isUser: Bool
     }

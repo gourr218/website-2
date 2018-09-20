@@ -5,6 +5,8 @@ import FluentPostgreSQL
 
 final class AdminTopicController {
 
+    /// MARK: Views
+
     func renderTopic(req: Request) throws -> Future<View> {
         return Topic.query(on: req).filter(\.isArchived == false).all().flatMap { topics in
             let viewData = ViewData.AdminTopicList(
@@ -14,6 +16,8 @@ final class AdminTopicController {
             return try req.view().render("Admin/topic", viewData)
         }
     }
+
+    /// MARK: Non-Views
 
     func archive(req: Request) throws -> Future<Response> {
         return try req.content.decode(ArchiveTopic.self).flatMap { archiveTopic in
@@ -38,7 +42,10 @@ final class AdminTopicController {
                 }
 
 
-                return try TopicUser.query(on: req).filter(\.topicID == topic.requireID()).delete().flatMap { _ in
+                return try TopicUser.query(on: req)
+                    .filter(\.topicID == topic.requireID())
+                    .delete()
+                    .flatMap {
                     return topic.delete(on: req).transform(to: redirect)
                 }
 
