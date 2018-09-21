@@ -9,6 +9,14 @@ struct Version: Encodable {
         Version(
             major: 2,
             minor: 0,
+            patch: 1,
+            changes: [
+                "added flash messages for register and login view"
+            ]
+        ),
+        Version(
+            major: 2,
+            minor: 0,
             patch: 0,
             changes: [
                 "complete rewrite (now using Vapor 3)"

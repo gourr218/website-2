@@ -2,16 +2,20 @@ import Vapor
 import Leaf
 import FluentPostgreSQL
 import Authentication
+import Flash
 
 public func configure(_ config: inout Config, _ env: inout Environment, _ services: inout Services) throws {
     let router = EngineRouter.default()
     try routes(router)
     services.register(router, as: Router.self)
 
+    try services.register(FlashProvider())
+
     var middlewares = MiddlewareConfig()
     middlewares.use(FileMiddleware.self)
     middlewares.use(ErrorMiddleware.self)
     middlewares.use(SessionsMiddleware.self)
+    middlewares.use(FlashMiddleware.self)
     services.register(middlewares)
 
     let leafProvider = LeafProvider()
@@ -30,6 +34,11 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     services.register(postgresqlConfig)
 
     try services.register(AuthenticationProvider())
+    services.register { _ -> LeafTagConfig in
+        var tags = LeafTagConfig.default()
+        tags.use(FlashTag(), as: "flash")
+        return tags
+    }
 
     var migrations = MigrationConfig()
     migrations.add(model: User.self, database: .psql)

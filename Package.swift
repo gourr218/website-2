@@ -9,6 +9,7 @@ let package = Package(
         .package(url: "https://github.com/vapor/leaf.git", from: "3.0.0"),
         .package(url: "https://github.com/vapor/auth.git", from: "2.0.0"),
         .package(url: "https://github.com/vapor/crypto.git", from: "3.2.0"),
+        .package(url: "https://github.com/nodes-vapor/flash.git", from: "3.0.0")
     ],
     targets: [
         .target(name: "App", dependencies: [
@@ -16,7 +17,8 @@ let package = Package(
             "FluentPostgreSQL",
             "Leaf",
             "Authentication",
-            "Crypto"
+            "Crypto",
+            "Flash"
         ]),
         .target(name: "Run", dependencies: ["App"]),
         .testTarget(name: "AppTests", dependencies: ["App"])

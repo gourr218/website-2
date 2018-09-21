@@ -7,15 +7,19 @@ final class UserController {
 
     func renderRegister(req: Request) throws -> Future<View> {
         let viewData = try ViewData.appInfoWithKey(on: req)
-        return try req.view().render("User/register", viewData)
+        /// view renderer must be created on the privateContainer
+        /// in order for `Flash 3.0.0` to work
+        let vr = try req.privateContainer.make(LeafRenderer.self)
+        return vr.render("User/register", viewData)
     }
 
     func register(req: Request) throws -> Future<Response> {
         return try req.content.decode(User.self).flatMap { user in
-            let registerRedirect = req.redirect(to: "/register")
+            let errorRedirect = req.redirect(to: "/register")
 
             if !user.isValid() {
-                return req.future(registerRedirect)
+                let resp = FlashMessage.Error.invalidRegisterValues(for: errorRedirect)
+                return req.future(resp)
             }
 
             return User
@@ -24,18 +28,22 @@ final class UserController {
                 .first()
                 .flatMap { result in
                 if let _ = result {
-                    return req.future(registerRedirect)
+                    let resp = FlashMessage.Error.emailNotUnique(for: errorRedirect)
+                    return req.future(resp)
                 }
 
                 user.password = try BCryptDigest().hash(user.password)
-                return user.save(on: req).transform(to: req.redirect(to: "/login"))
+                let successRedirect = req.redirect(to: "/login")
+                let resp = FlashMessage.Success.successfulRegistration(for: successRedirect)
+                return user.save(on: req).transform(to: resp)
             }
         }
     }
 
     func renderLogin(req: Request) throws -> Future<View> {
         let viewData = try ViewData.appInfoWithKey(on: req)
-        return try req.view().render("User/login", viewData)
+        let vr = try req.privateContainer.make(LeafRenderer.self)
+        return vr.render("User/login", viewData)
     }
 
     func login(req: Request) throws -> Future<Response> {
@@ -47,7 +55,9 @@ final class UserController {
                 on: req
             ).map { user in
                 guard let user = user else {
-                    return req.redirect(to: "/login")
+                    let redirect = req.redirect(to: "/login")
+                    let resp = FlashMessage.Error.invalidLoginValues(for: redirect)
+                    return resp
                 }
 
                 try req.authenticateSession(user)

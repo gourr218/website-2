@@ -1,0 +1,11 @@
+.flash {
+    background: #ffffff;
+}
+
+.flash-error {
+    color: #f46a78;
+}
+
+.flash-success {
+    color: #28a745;
+}

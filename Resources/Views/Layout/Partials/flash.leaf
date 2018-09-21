@@ -1,0 +1,7 @@
+#flash() {
+    #for(flash in all) {
+        <div class="flash flash-#(flash.kind) alert text-center">
+            #(flash.message)
+        </div>
+    }
+}
