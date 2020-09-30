@@ -1,8 +1,8 @@
-<h2 align="center">
+<h3 align="center">
     <a href="http://vapor.berlin">
         vapor.berlin
     </a>
-</h2>
+</h3>
 <p align="center">
     website to create and vote topics for our next meetup
 </p>
